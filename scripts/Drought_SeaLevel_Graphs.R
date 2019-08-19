@@ -33,7 +33,7 @@ legend("topleft", legend = c("North Florida", "Southeast Georgia"), col = c("red
 #Percipitation Index
 #Southeast Georgia
 #North Florida
-plot(gdi$Date, gdi$PCP, xlab = "Date", ylab = "PDSI", type = 'l', ylim = c(0,20), lwd = 2, cex.lab = 1.2, cex.axis = 1.2)
+plot(gdi$Date, gdi$PCP, xlab = "Date", ylab = "Precipitation", type = 'l', ylim = c(0,20), lwd = 2, cex.lab = 1.2, cex.axis = 1.2)
 lines(fdi$Date, fdi$PCP, col = "red", lwd = 2)
 legend("topleft", legend = c("North Florida", "Southeast Georgia"), col = c("red", "black"), lty = 1, lwd = 2, bty = 'n', cex = 1.2)
 
@@ -50,3 +50,18 @@ sl$Date <- as.Date(sl$Date, "%Y-%m-%d")
 #plot
 plot(sl$Date, sl$Monthly_MSL, type = 'l', xlab = "Date", ylab = "Monthly Mean Sea Level", cex.lab = 1.2, cex.axis = 1.2, lwd = 1.5)
 lines(sl$Date, sl$Linear_Trend, lwd = 2)
+
+
+
+#####put all plots on the same page
+layout(matrix(c(2,3,1,1), 2, 2, byrow = TRUE))
+plot(sl$Date, sl$Monthly_MSL, type = 'l', xlab = "Date", ylab = "Monthly Mean Sea Level", cex.lab = 1.2, cex.axis = 1.2, lwd = 1.5)
+lines(sl$Date, sl$Linear_Trend, lwd = 2)
+plot(gdi$Date, gdi$PDSI, xlab = "Date", ylab = "PDSI", type = 'l', ylim = c(-6,6), lwd = 2, cex.lab = 1.2, cex.axis = 1.2)
+lines(fdi$Date, fdi$PDSI, col = "red", lwd = 2)
+legend("topleft", legend = c("North Florida", "Southeast Georgia"), col = c("red", "black"), lty = 1, lwd = 2, bty = 'n', cex = 1)
+plot(gdi$Date, gdi$PCP, xlab = "Date", ylab = "Precipitation", type = 'l', ylim = c(0,20), lwd = 2, cex.lab = 1.2, cex.axis = 1.2)
+lines(fdi$Date, fdi$PCP, col = "red", lwd = 2)
+legend("topleft", legend = c("North Florida", "Southeast Georgia"), col = c("red", "black"), lty = 1, lwd = 2, bty = 'n', cex = 1)
+
+
